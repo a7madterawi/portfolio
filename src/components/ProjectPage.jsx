@@ -2,12 +2,24 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, CheckCircle, Wrench,
+<<<<<<< HEAD
   BarChart2, Calendar, User, Tag, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { staggerContainer, fadeUp } from '../data';
 
 export default function ProjectPage({ project, backText, onBack, isRTL, t, onContactClick }) {
   const [activeImg, setActiveImg] = useState(0);
+=======
+  BarChart2, Calendar, User, Tag, ChevronLeft, ChevronRight, Play
+} from 'lucide-react';
+import { staggerContainer, fadeUp } from '../data';
+import ReelsThumbnail from './ReelsThumbnail';
+import VideoModal from './VideoModal';
+
+export default function ProjectPage({ project, backText, onBack, isRTL, t, onContactClick }) {
+  const [activeImg, setActiveImg] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+>>>>>>> origin/master
   const allImages = [project.image, ...(project.gallery || [])];
 
   const prevImg = () => setActiveImg((i) => (i - 1 + allImages.length) % allImages.length);
@@ -51,6 +63,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
           <span className="text-sm font-semibold">{backText}</span>
         </motion.button>
 
+<<<<<<< HEAD
         {/* ── Hero image carousel ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
@@ -59,6 +72,32 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
           className="relative rounded-3xl overflow-hidden mb-10 group"
           style={{ aspectRatio: '16/7' }}
         >
+=======
+        {/* ── Hero image carousel or Video Thumbnail ── */}
+        {project.category === 'video' && project.videoUrl ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center mb-10"
+          >
+            <div className="w-full max-w-sm">
+              <ReelsThumbnail 
+                image={project.image} 
+                onClick={() => setIsModalOpen(true)} 
+                title={project.title} 
+              />
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="relative rounded-3xl overflow-hidden mb-10 group"
+            style={{ aspectRatio: '16/7' }}
+          >
+>>>>>>> origin/master
           <AnimatePresence mode="wait">
             <motion.img
               key={activeImg}
@@ -123,6 +162,10 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             </div>
           )}
         </motion.div>
+<<<<<<< HEAD
+=======
+        )}
+>>>>>>> origin/master
 
         {/* ── Main content grid ── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -242,6 +285,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             )}
 
             {/* CTA */}
+<<<<<<< HEAD
             <motion.button
               whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(234,88,12,0.45)' }}
               whileTap={{ scale: 0.97 }}
@@ -256,6 +300,48 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
           </motion.div>
         </div>
       </div>
+=======
+            <div className="space-y-3">
+              {project.category === 'video' && project.videoUrl && (
+                <motion.button
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(255,255,255,0.1)' }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full py-4 px-6 rounded-2xl font-black text-black text-base
+                    bg-white
+                    shadow-[0_0_20px_rgba(255,255,255,0.15)]
+                    transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Play size={18} fill="currentColor" />
+                  {isRTL ? 'مشاهدة المشروع' : 'Watch Project'}
+                </motion.button>
+              )}
+              
+              <motion.button
+                whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(234,88,12,0.45)' }}
+                whileTap={{ scale: 0.97 }}
+                onClick={onContactClick}
+                className="w-full py-4 px-6 rounded-2xl font-black text-white text-base
+                  bg-gradient-to-r from-orange-600 to-red-600
+                  shadow-[0_0_20px_rgba(234,88,12,0.25)]
+                  transition-all duration-300"
+              >
+                {isRTL ? 'ابدأ مشروعاً مماثلاً' : 'Start a Similar Project'}
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Video Modal */}
+      {project.category === 'video' && project.videoUrl && (
+        <VideoModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          videoUrl={project.videoUrl} 
+        />
+      )}
+>>>>>>> origin/master
     </motion.section>
   );
 }

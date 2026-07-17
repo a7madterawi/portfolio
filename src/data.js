@@ -304,6 +304,10 @@ export const mockProjects = [
     id: 4,
     category: 'video',
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85',
+<<<<<<< HEAD
+=======
+    videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+>>>>>>> origin/master
     gallery: [
       'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=900&q=80',
       'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80',

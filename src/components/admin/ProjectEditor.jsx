@@ -10,6 +10,10 @@ const CATEGORIES = ['branding', 'logos', 'social', 'video', 'campaign'];
 const emptyProject = {
   category: 'branding',
   image:    '',
+<<<<<<< HEAD
+=======
+  videoUrl: '',
+>>>>>>> origin/master
   gallery:  ['', '', ''],
   title:    '',
   client:   '',
@@ -331,6 +335,23 @@ export default function ProjectEditor({ project, onSave, onCancel }) {
               className={`${inputCls} flex-1 text-xs py-2.5`}
             />
           </div>
+<<<<<<< HEAD
+=======
+          
+          {/* Vertical Video URL */}
+          {draft.category === 'video' && (
+            <div className="mt-3 flex gap-3 items-center">
+              <span className="text-slate-500 flex-shrink-0 text-xs font-bold w-4 flex justify-center">▶</span>
+              <input
+                type="url"
+                value={draft.videoUrl || ''}
+                onChange={(e) => set('videoUrl', e.target.value)}
+                placeholder="Vertical Video URL (.mp4) (e.g. https://domain.com/video.mp4)"
+                className={`${inputCls} flex-1 text-xs py-2.5 border-orange-500/30`}
+              />
+            </div>
+          )}
+>>>>>>> origin/master
         </div>
 
         {/* ── Behance-style: Large editable title ── */}
