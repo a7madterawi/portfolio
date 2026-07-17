@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-<<<<<<< HEAD
-=======
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
->>>>>>> origin/master
-import App      from './App.jsx';
+import App from './App.jsx';
 import AdminApp from './components/admin/AdminApp.jsx';
 import './index.css';
 
@@ -26,30 +23,17 @@ function Root() {
     setIsAdmin(false);
   };
 
-  if (isAdmin) {
-    return <AdminApp onExit={exitAdmin} />;
-  }
-
-<<<<<<< HEAD
-  return <App />;
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-);
-=======
+  // We wrap the entire application interface in the required routing and head metadata contexts
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        {isAdmin ? <AdminApp onExit={exitAdmin} /> : <App />}
       </BrowserRouter>
     </HelmetProvider>
   );
 }
 
-// Support for react-snap pre-rendering
+// Support for react-snap pre-rendering / standard mounting
 const rootElement = document.getElementById('root');
 if (rootElement.hasChildNodes()) {
   ReactDOM.hydrateRoot(
@@ -65,4 +49,3 @@ if (rootElement.hasChildNodes()) {
     </React.StrictMode>
   );
 }
->>>>>>> origin/master
