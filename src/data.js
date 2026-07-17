@@ -239,7 +239,7 @@ export const mockProjects = [
       'Caption copywriting (EN & AR)',
     ],
     results: [
-      { label: 'Engagement Rate',  value: '+210%' },
+      { label: 'Engagement Rate', value: '+210%' },
       { label: 'Followers Gained', value: '4,800+' },
       { label: 'Avg. Reach / Post', value: '12K' },
     ],
@@ -267,9 +267,9 @@ export const mockProjects = [
       'Retargeting funnel setup',
     ],
     results: [
-      { label: 'ROAS',              value: '6.4×' },
-      { label: 'New Reservations',  value: '+340' },
-      { label: 'Cost Per Lead',     value: '−58%' },
+      { label: 'ROAS', value: '6.4×' },
+      { label: 'New Reservations', value: '+340' },
+      { label: 'Cost Per Lead', value: '−58%' },
     ],
   },
   {
@@ -296,18 +296,18 @@ export const mockProjects = [
     ],
     results: [
       { label: 'Interviews Secured', value: '4 in 3 Weeks' },
-      { label: 'ATS Pass Rate',     value: '94%' },
-      { label: 'LinkedIn Views',    value: '+320%' },
+      { label: 'ATS Pass Rate', value: '94%' },
+      { label: 'LinkedIn Views', value: '+320%' },
     ],
   },
   {
     id: 4,
     category: 'video',
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85',
-<<<<<<< HEAD
-=======
+
+
     videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
->>>>>>> origin/master
+
     gallery: [
       'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=900&q=80',
       'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80',
@@ -327,9 +327,9 @@ export const mockProjects = [
       'Thumbnail / cover frame design',
     ],
     results: [
-      { label: 'Total Views',      value: '1.2M+' },
-      { label: 'Avg. Watch Time',  value: '88%' },
-      { label: 'New Followers',    value: '+11K' },
+      { label: 'Total Views', value: '1.2M+' },
+      { label: 'Avg. Watch Time', value: '88%' },
+      { label: 'New Followers', value: '+11K' },
     ],
   },
   {
@@ -355,9 +355,9 @@ export const mockProjects = [
       'Source files (AI, SVG, PNG, PDF)',
     ],
     results: [
-      { label: 'Logo Concepts',       value: '3 Unique' },
-      { label: 'Revision Rounds',     value: '2' },
-      { label: 'Delivery Time',       value: '5 Days' },
+      { label: 'Logo Concepts', value: '3 Unique' },
+      { label: 'Revision Rounds', value: '2' },
+      { label: 'Delivery Time', value: '5 Days' },
     ],
   },
   {
@@ -383,41 +383,41 @@ export const mockProjects = [
       'Brand guidelines (48-page PDF)',
     ],
     results: [
-      { label: 'SKUs Branded',         value: '3 Products' },
-      { label: 'Retail Launch',        value: 'On Schedule' },
-      { label: 'Stockist Enquiries',   value: '14 in Month 1' },
+      { label: 'SKUs Branded', value: '3 Products' },
+      { label: 'Retail Launch', value: 'On Schedule' },
+      { label: 'Stockist Enquiries', value: '14 in Month 1' },
     ],
   },
 ];
 
 export const mockTestimonials = [
-  { id: 1, name: 'Sami R.',  role: 'CEO, TechFlow',        text: 'Ahmed is highly efficient and transformed our brand identity. The results were outstanding!', rating: 5 },
-  { id: 2, name: 'Nour K.',  role: 'Marketing Mgr.',       text: 'Followed the brief exactly. The ad campaigns he ran increased our leads by 150% in one month.', rating: 5 },
-  { id: 3, name: 'Omar T.',  role: 'E-com Store Owner',    text: 'Very professional. The social media designs are clean, bold, and exactly what we needed to stand out.', rating: 5 },
+  { id: 1, name: 'Sami R.', role: 'CEO, TechFlow', text: 'Ahmed is highly efficient and transformed our brand identity. The results were outstanding!', rating: 5 },
+  { id: 2, name: 'Nour K.', role: 'Marketing Mgr.', text: 'Followed the brief exactly. The ad campaigns he ran increased our leads by 150% in one month.', rating: 5 },
+  { id: 3, name: 'Omar T.', role: 'E-com Store Owner', text: 'Very professional. The social media designs are clean, bold, and exactly what we needed to stand out.', rating: 5 },
 ];
 
 // ─── Framer Motion Variants ────────────────────────────────────────────────
 export const fadeUp = {
-  hidden:  { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0,  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
 };
 
 export const fadeIn = {
-  hidden:  { opacity: 0 },
+  hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 export const slideLeft = {
-  hidden:  { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0,   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
 };
 
 export const staggerContainer = {
-  hidden:  { opacity: 0 },
+  hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
 };
 
 export const scaleIn = {
-  hidden:  { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1,    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
 };

@@ -1,32 +1,20 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-<<<<<<< HEAD
-=======
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
->>>>>>> origin/master
 
 import { translations } from './data';
 import { useProjects, useServices } from './hooks/useLocalData';
 import { MeshBackground, MagneticCursor } from './components/UI';
-import Navbar              from './components/Navbar';
-import HeroSection         from './components/HeroSection';
-import ServicesSection     from './components/ServicesSection';
-import PortfolioSection    from './components/PortfolioSection';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import PortfolioSection from './components/PortfolioSection';
 import TestimonialsSection from './components/TestimonialsSection';
-import ContactSection      from './components/ContactSection';
-import Footer              from './components/Footer';
-import ContentPage         from './components/ContentPage';
-import ProjectPage         from './components/ProjectPage';
-<<<<<<< HEAD
-
-export default function App() {
-  const [lang,          setLang]          = useState('en');
-  const [activeTab,     setActiveTab]     = useState('all');
-  const [scrolled,      setScrolled]      = useState(false);
-  const [activePage,    setActivePage]    = useState('home');
-  const [activeProject, setActiveProject] = useState(null);
-=======
-import SEO                 from './components/SEO';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import ContentPage from './components/ContentPage';
+import ProjectPage from './components/ProjectPage';
+import SEO from './components/SEO';
 
 // Helper component to handle scrolling to hash when navigating to home from another page
 function ScrollToHash() {
@@ -52,17 +40,12 @@ export default function App() {
 
   const navigate = useNavigate();
   const location = useLocation();
->>>>>>> origin/master
 
   // ── Dynamic data from localStorage (syncs with admin panel) ───────────────
   const { projects, setProjects } = useProjects();
   const { services, setServices } = useServices();
 
-<<<<<<< HEAD
-  const t     = translations[lang];
-=======
   const t = translations[lang];
->>>>>>> origin/master
   const isRTL = lang === 'ar';
 
   // ── Scroll listener ───────────────────────────────────────────────────────
@@ -76,17 +59,17 @@ export default function App() {
   useEffect(() => {
     const onStorage = (e) => {
       if (e.key === 'ag_portfolio_projects' && e.newValue) {
-        try { setProjects(JSON.parse(e.newValue)); } catch {}
+        try { setProjects(JSON.parse(e.newValue)); } catch { }
       }
       if (e.key === 'ag_portfolio_services' && e.newValue) {
-        try { setServices(JSON.parse(e.newValue)); } catch {}
+        try { setServices(JSON.parse(e.newValue)); } catch { }
       }
     };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
   }, [setProjects, setServices]);
 
-  // ── Client-side security (exact original logic) ───────────────────────────
+  // ── Client-side security ──────────────────────────────────────────────────
   useEffect(() => {
     const blockContextMenu = (e) => e.preventDefault();
     const blockKeys = (e) => {
@@ -108,11 +91,7 @@ export default function App() {
 
   // ── RTL / font dir ────────────────────────────────────────────────────────
   useEffect(() => {
-<<<<<<< HEAD
-    document.documentElement.dir  = isRTL ? 'rtl' : 'ltr';
-=======
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
->>>>>>> origin/master
     document.documentElement.lang = lang;
   }, [lang, isRTL]);
 
@@ -121,57 +100,32 @@ export default function App() {
   // ── Navigation helpers ────────────────────────────────────────────────────
   const handleNavClick = (sectionId, e) => {
     if (e) e.preventDefault();
-<<<<<<< HEAD
-    if (activePage !== 'home') {
-      setActivePage('home');
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-      }, 200);
-=======
-    if (location.pathname !== '/') {
-      navigate(`/#${sectionId}`);
->>>>>>> origin/master
-    } else {
+    navigate(`/#${sectionId}`);
+    setTimeout(() => {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    }
+    }, 200);
   };
 
   const navigateToPage = (pageId, e) => {
     if (e) e.preventDefault();
-<<<<<<< HEAD
-    setActiveProject(null);
-    setActivePage(pageId);
-=======
     if (pageId === 'home') {
       navigate('/');
     } else {
       navigate(`/${pageId}`);
     }
->>>>>>> origin/master
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToProject = (project) => {
-<<<<<<< HEAD
-    setActiveProject(project);
-    setActivePage('project');
-=======
     navigate(`/project/${project.id}`);
->>>>>>> origin/master
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToContact = () => {
-<<<<<<< HEAD
-    setActiveProject(null);
-    setActivePage('home');
+    navigate('/#contact');
     setTimeout(() => {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     }, 200);
-  };
-
-=======
-    handleNavClick('contact');
   };
 
   // Determine active page for Navbar highlighting
@@ -179,37 +133,25 @@ export default function App() {
   if (location.pathname.startsWith('/project')) activePage = 'project';
   else if (location.pathname !== '/') activePage = location.pathname.substring(1);
 
->>>>>>> origin/master
   return (
     <div
       dir={isRTL ? 'rtl' : 'ltr'}
       className="min-h-screen bg-[#030712] text-slate-100 font-sans antialiased relative noise"
     >
-<<<<<<< HEAD
-      {/* ── Animated mesh background ── */}
+      {/* ── Background & Layout elements ── */}
       <MeshBackground />
-
-      {/* ── Custom cursor (desktop only) ── */}
       <MagneticCursor />
+      <ScrollToHash />
 
       {/* ── Scarcity banner ── */}
-=======
-      <ScrollToHash />
-      <MeshBackground />
-      <MagneticCursor />
-
->>>>>>> origin/master
       <div className="relative z-50 w-full text-center py-2.5 px-4
-        bg-gradient-to-r from-orange-700 via-red-600 to-orange-700
-        text-white text-xs sm:text-sm font-bold tracking-wide
-        shadow-[0_2px_16px_rgba(234,88,12,0.4)]">
+      bg-gradient-to-r from-orange-700 via-red-600 to-orange-700
+      text-white text-xs sm:text-sm font-bold tracking-wide
+      shadow-[0_2px_16px_rgba(234,88,12,0.4)]">
         {t.scarcity}
       </div>
 
-<<<<<<< HEAD
       {/* ── Navbar ── */}
-=======
->>>>>>> origin/master
       <Navbar
         t={t}
         lang={lang}
@@ -220,74 +162,7 @@ export default function App() {
         activePage={activePage}
       />
 
-<<<<<<< HEAD
-      {/* ── Page content ── */}
-      <main className="relative z-10">
-        <AnimatePresence mode="wait">
-          {activePage === 'home' ? (
-            <motion.div
-              key="home"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{   opacity: 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              <HeroSection
-                t={t}
-                lang={lang}
-                isRTL={isRTL}
-                handleNavClick={handleNavClick}
-              />
-
-              {/* Section divider */}
-              <div className="section-divider" />
-
-              <ServicesSection t={t} servicesOverride={services} />
-
-              <div className="section-divider" />
-
-              <PortfolioSection
-                t={t}
-                projects={projects}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                isRTL={isRTL}
-                onViewProject={navigateToProject}
-              />
-
-              <div className="section-divider" />
-
-              <TestimonialsSection t={t} />
-
-              <div className="section-divider" />
-
-              <ContactSection t={t} lang={lang} isRTL={isRTL} />
-            </motion.div>
-          ) : activePage === 'project' && activeProject ? (
-            <ProjectPage
-              key={`project-${activeProject.id}`}
-              project={activeProject}
-              backText={t.pages.backButton}
-              onBack={() => navigateToPage('home')}
-              isRTL={isRTL}
-              t={t}
-              onContactClick={navigateToContact}
-            />
-          ) : (
-            <ContentPage
-              key={activePage}
-              pageId={activePage}
-              pageData={t.pages[activePage]}
-              backText={t.pages.backButton}
-              onBack={() => navigateToPage('home')}
-              isRTL={isRTL}
-            />
-          )}
-        </AnimatePresence>
-      </main>
-
-      {/* ── Footer ── */}
-=======
+      {/* ── Page content Routing ── */}
       <main className="relative z-10">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -323,13 +198,11 @@ export default function App() {
         </AnimatePresence>
       </main>
 
->>>>>>> origin/master
+      {/* ── Footer ── */}
       <Footer t={t} lang={lang} navigateToPage={navigateToPage} />
     </div>
   );
 }
-<<<<<<< HEAD
-=======
 
 // Wrapper for Project Route
 function ProjectRoute({ projects, t, isRTL, navigateToPage, navigateToContact }) {
@@ -340,10 +213,10 @@ function ProjectRoute({ projects, t, isRTL, navigateToPage, navigateToContact })
 
   return (
     <>
-      <SEO 
-        title={project.title} 
-        description={project.overview} 
-        image={project.image} 
+      <SEO
+        title={project.title}
+        description={project.overview}
+        image={project.image}
       />
       <ProjectPage
         project={project}
@@ -366,9 +239,9 @@ function PageRoute({ t, isRTL, navigateToPage }) {
 
   return (
     <>
-      <SEO 
-        title={pageData.title} 
-        description={pageData.paragraphs?.[0] || t.hero.desc} 
+      <SEO
+        title={pageData.title}
+        description={pageData.paragraphs?.[0] || t.hero.desc}
       />
       <ContentPage
         pageId={pageId}
@@ -380,4 +253,3 @@ function PageRoute({ t, isRTL, navigateToPage }) {
     </>
   );
 }
->>>>>>> origin/master

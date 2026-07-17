@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowLeft, ArrowRight, CheckCircle, Wrench,
-<<<<<<< HEAD
-  BarChart2, Calendar, User, Tag, ChevronLeft, ChevronRight
-} from 'lucide-react';
-import { staggerContainer, fadeUp } from '../data';
-
-export default function ProjectPage({ project, backText, onBack, isRTL, t, onContactClick }) {
-  const [activeImg, setActiveImg] = useState(0);
-=======
-  BarChart2, Calendar, User, Tag, ChevronLeft, ChevronRight, Play
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle,
+  Wrench,
+  BarChart2,
+  Calendar,
+  User,
+  Tag,
+  ChevronLeft,
+  ChevronRight,
+  Play
 } from 'lucide-react';
 import { staggerContainer, fadeUp } from '../data';
 import ReelsThumbnail from './ReelsThumbnail';
@@ -19,7 +20,7 @@ import VideoModal from './VideoModal';
 export default function ProjectPage({ project, backText, onBack, isRTL, t, onContactClick }) {
   const [activeImg, setActiveImg] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
->>>>>>> origin/master
+
   const allImages = [project.image, ...(project.gallery || [])];
 
   const prevImg = () => setActiveImg((i) => (i - 1 + allImages.length) % allImages.length);
@@ -33,7 +34,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
       key={project.id}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{   opacity: 0, y: -20 }}
+      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="relative min-h-screen pt-32 pb-24 overflow-hidden"
     >
@@ -59,20 +60,10 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
         >
           {isRTL
             ? <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-            : <ArrowLeft  size={15} className="group-hover:-translate-x-1 transition-transform" />}
+            : <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />}
           <span className="text-sm font-semibold">{backText}</span>
         </motion.button>
 
-<<<<<<< HEAD
-        {/* ── Hero image carousel ── */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded-3xl overflow-hidden mb-10 group"
-          style={{ aspectRatio: '16/7' }}
-        >
-=======
         {/* ── Hero image carousel or Video Thumbnail ── */}
         {project.category === 'video' && project.videoUrl ? (
           <motion.div
@@ -82,10 +73,10 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             className="flex justify-center mb-10"
           >
             <div className="w-full max-w-sm">
-              <ReelsThumbnail 
-                image={project.image} 
-                onClick={() => setIsModalOpen(true)} 
-                title={project.title} 
+              <ReelsThumbnail
+                image={project.image}
+                onClick={() => setIsModalOpen(true)}
+                title={project.title}
               />
             </div>
           </motion.div>
@@ -97,75 +88,69 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             className="relative rounded-3xl overflow-hidden mb-10 group"
             style={{ aspectRatio: '16/7' }}
           >
->>>>>>> origin/master
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={activeImg}
-              src={allImages[activeImg]}
-              alt={`${project.title} — image ${activeImg + 1}`}
-              initial={{ opacity: 0, scale: 1.04 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{   opacity: 0 }}
-              transition={{ duration: 0.45, ease: 'easeInOut' }}
-              className="w-full h-full object-cover absolute inset-0"
-            />
-          </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeImg}
+                src={allImages[activeImg]}
+                alt={`${project.title} — image ${activeImg + 1}`}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease: 'easeInOut' }}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+            </AnimatePresence>
 
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-          {/* Carousel controls */}
-          {allImages.length > 1 && (
-            <>
-              <button onClick={prevImg} aria-label="Previous image"
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
+            {/* Carousel controls */}
+            {allImages.length > 1 && (
+              <>
+                <button onClick={prevImg} aria-label="Previous image"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
                   glass border border-white/20 flex items-center justify-center
                   text-white hover:border-orange-500/50 transition-all duration-200
                   opacity-0 group-hover:opacity-100">
-                <ChevronLeft size={18} />
-              </button>
-              <button onClick={nextImg} aria-label="Next image"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
+                  <ChevronLeft size={18} />
+                </button>
+                <button onClick={nextImg} aria-label="Next image"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
                   glass border border-white/20 flex items-center justify-center
                   text-white hover:border-orange-500/50 transition-all duration-200
                   opacity-0 group-hover:opacity-100">
-                <ChevronRight size={18} />
-              </button>
+                  <ChevronRight size={18} />
+                </button>
 
-              {/* Dot indicators */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-                {allImages.map((_, i) => (
-                  <button key={i} onClick={() => setActiveImg(i)} aria-label={`Image ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === activeImg ? 'w-5 bg-orange-500' : 'w-1.5 bg-white/40'
-                    }`}
-                  />
+                {/* Dot indicators */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {allImages.map((_, i) => (
+                    <button key={i} onClick={() => setActiveImg(i)} aria-label={`Image ${i + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${i === activeImg ? 'w-5 bg-orange-500' : 'w-1.5 bg-white/40'
+                        }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Thumbnail strip */}
+            {allImages.length > 1 && (
+              <div className="absolute bottom-0 inset-x-0 px-6 pb-4 hidden sm:flex gap-2 justify-end">
+                {allImages.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className={`w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${i === activeImg ? 'border-orange-500 scale-105' : 'border-white/20 opacity-60 hover:opacity-100'
+                      }`}
+                  >
+                    <img src={img} alt="" className="w-full h-full object-cover" />
+                  </button>
                 ))}
               </div>
-            </>
-          )}
-
-          {/* Thumbnail strip */}
-          {allImages.length > 1 && (
-            <div className="absolute bottom-0 inset-x-0 px-6 pb-4 hidden sm:flex gap-2 justify-end">
-              {allImages.map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImg(i)}
-                  className={`w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
-                    i === activeImg ? 'border-orange-500 scale-105' : 'border-white/20 opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
-          )}
-        </motion.div>
-<<<<<<< HEAD
-=======
+            )}
+          </motion.div>
         )}
->>>>>>> origin/master
 
         {/* ── Main content grid ── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -192,8 +177,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             </motion.div>
 
             {/* Overview */}
-            <motion.div variants={fadeUp}
-              className="glass border border-white/[0.07] rounded-2xl p-7">
+            <motion.div variants={fadeUp} className="glass border border-white/[0.07] rounded-2xl p-7">
               <h2 className="text-xs font-bold text-slate-500 tracking-[0.2em] uppercase mb-4">
                 {isRTL ? 'نظرة عامة' : 'Project Overview'}
               </h2>
@@ -203,8 +187,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             </motion.div>
 
             {/* Deliverables */}
-            <motion.div variants={fadeUp}
-              className="glass border border-white/[0.07] rounded-2xl p-7">
+            <motion.div variants={fadeUp} className="glass border border-white/[0.07] rounded-2xl p-7">
               <h2 className="text-xs font-bold text-slate-500 tracking-[0.2em] uppercase mb-5 flex items-center gap-2">
                 <CheckCircle size={13} className="text-orange-500" />
                 {isRTL ? 'المخرجات' : 'Deliverables'}
@@ -227,8 +210,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
 
             {/* Results */}
             {project.results?.length > 0 && (
-              <motion.div variants={fadeUp}
-                className="glass border border-white/[0.07] rounded-2xl p-7">
+              <motion.div variants={fadeUp} className="glass border border-white/[0.07] rounded-2xl p-7">
                 <h2 className="text-xs font-bold text-slate-500 tracking-[0.2em] uppercase mb-6 flex items-center gap-2">
                   <BarChart2 size={13} className="text-orange-500" />
                   {isRTL ? 'النتائج' : 'Results'}
@@ -265,8 +247,8 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
             {/* Info card */}
             <div className="glass border border-white/[0.07] rounded-2xl p-6 space-y-5">
               <InfoRow Icon={User} label={isRTL ? 'العميل' : 'Client'} value={project.client} />
-              <InfoRow Icon={Calendar} label={isRTL ? 'السنة' : 'Year'}   value={project.year} />
-              <InfoRow Icon={Tag} label={isRTL ? 'النوع' : 'Category'}    value={categoryLabel} />
+              <InfoRow Icon={Calendar} label={isRTL ? 'السنة' : 'Year'} value={project.year} />
+              <InfoRow Icon={Tag} label={isRTL ? 'النوع' : 'Category'} value={categoryLabel} />
             </div>
 
             {/* Tools */}
@@ -284,23 +266,7 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
               </div>
             )}
 
-            {/* CTA */}
-<<<<<<< HEAD
-            <motion.button
-              whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(234,88,12,0.45)' }}
-              whileTap={{ scale: 0.97 }}
-              onClick={onContactClick}
-              className="w-full py-4 px-6 rounded-2xl font-black text-white text-base
-                bg-gradient-to-r from-orange-600 to-red-600
-                shadow-[0_0_20px_rgba(234,88,12,0.25)]
-                transition-all duration-300"
-            >
-              {isRTL ? 'ابدأ مشروعاً مماثلاً' : 'Start a Similar Project'}
-            </motion.button>
-          </motion.div>
-        </div>
-      </div>
-=======
+            {/* CTA Elements */}
             <div className="space-y-3">
               {project.category === 'video' && project.videoUrl && (
                 <motion.button
@@ -308,15 +274,14 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setIsModalOpen(true)}
                   className="w-full py-4 px-6 rounded-2xl font-black text-black text-base
-                    bg-white
-                    shadow-[0_0_20px_rgba(255,255,255,0.15)]
+                    bg-white shadow-[0_0_20px_rgba(255,255,255,0.15)]
                     transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <Play size={18} fill="currentColor" />
                   {isRTL ? 'مشاهدة المشروع' : 'Watch Project'}
                 </motion.button>
               )}
-              
+
               <motion.button
                 whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(234,88,12,0.45)' }}
                 whileTap={{ scale: 0.97 }}
@@ -332,16 +297,15 @@ export default function ProjectPage({ project, backText, onBack, isRTL, t, onCon
           </motion.div>
         </div>
       </div>
-      
+
       {/* Video Modal */}
       {project.category === 'video' && project.videoUrl && (
-        <VideoModal 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
-          videoUrl={project.videoUrl} 
+        <VideoModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          videoUrl={project.videoUrl}
         />
       )}
->>>>>>> origin/master
     </motion.section>
   );
 }

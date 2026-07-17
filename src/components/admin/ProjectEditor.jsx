@@ -9,17 +9,17 @@ const CATEGORIES = ['branding', 'logos', 'social', 'video', 'campaign'];
 
 const emptyProject = {
   category: 'branding',
-  image:    '',
-<<<<<<< HEAD
-=======
+  image: '',
+
+
   videoUrl: '',
->>>>>>> origin/master
-  gallery:  ['', '', ''],
-  title:    '',
-  client:   '',
-  year:     String(new Date().getFullYear()),
-  tags:     [],
-  tools:    [],
+
+  gallery: ['', '', ''],
+  title: '',
+  client: '',
+  year: String(new Date().getFullYear()),
+  tags: [],
+  tools: [],
   overview: '',
   deliverables: [''],
   results: [{ label: '', value: '' }],
@@ -85,9 +85,9 @@ function TagInput({ tags, onChange, placeholder }) {
 
 /* ─── Dynamic list (deliverables) ─────────────────────────────────────────── */
 function DynamicList({ items, onChange, placeholder }) {
-  const add    = ()      => onChange([...items, '']);
-  const update = (i, v)  => onChange(items.map((x, j) => (j === i ? v : x)));
-  const remove = (i)     => onChange(items.filter((_, j) => j !== i));
+  const add = () => onChange([...items, '']);
+  const update = (i, v) => onChange(items.map((x, j) => (j === i ? v : x)));
+  const remove = (i) => onChange(items.filter((_, j) => j !== i));
 
   return (
     <div className="space-y-2">
@@ -120,9 +120,9 @@ function DynamicList({ items, onChange, placeholder }) {
 
 /* ─── Results metrics editor ──────────────────────────────────────────────── */
 function ResultsList({ results, onChange }) {
-  const add    = ()          => onChange([...results, { label: '', value: '' }]);
+  const add = () => onChange([...results, { label: '', value: '' }]);
   const update = (i, field, v) => onChange(results.map((r, j) => j === i ? { ...r, [field]: v } : r));
-  const remove = (i)         => onChange(results.filter((_, j) => j !== i));
+  const remove = (i) => onChange(results.filter((_, j) => j !== i));
 
   return (
     <div className="space-y-2">
@@ -162,8 +162,8 @@ function ResultsList({ results, onChange }) {
 /* ─── Gallery editor ──────────────────────────────────────────────────────── */
 function GalleryEditor({ images, onChange }) {
   const update = (i, v) => onChange(images.map((x, j) => (j === i ? v : x)));
-  const add    = ()     => onChange([...images, '']);
-  const remove = (i)    => onChange(images.filter((_, j) => j !== i));
+  const add = () => onChange([...images, '']);
+  const remove = (i) => onChange(images.filter((_, j) => j !== i));
 
   return (
     <div className="space-y-3">
@@ -220,8 +220,8 @@ function Toast({ msg }) {
       {msg && (
         <motion.div
           initial={{ opacity: 0, y: 20, x: '-50%' }}
-          animate={{ opacity: 1, y: 0,  x: '-50%' }}
-          exit={{   opacity: 0, y: 20,  x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          exit={{ opacity: 0, y: 20, x: '-50%' }}
           className="fixed bottom-8 left-1/2 z-50 flex items-center gap-2.5
             px-5 py-3 rounded-2xl bg-green-600 text-white font-bold text-sm shadow-xl"
         >
@@ -241,11 +241,11 @@ export default function ProjectEditor({ project, onSave, onCancel }) {
   const [draft, setDraft] = useState(() => ({
     ...emptyProject,
     ...(project || {}),
-    gallery:      project?.gallery?.length      ? [...project.gallery]      : ['', '', ''],
+    gallery: project?.gallery?.length ? [...project.gallery] : ['', '', ''],
     deliverables: project?.deliverables?.length ? [...project.deliverables] : [''],
-    results:      project?.results?.length      ? [...project.results]      : [{ label: '', value: '' }],
-    tags:         project?.tags  ? [...project.tags]  : [],
-    tools:        project?.tools ? [...project.tools] : [],
+    results: project?.results?.length ? [...project.results] : [{ label: '', value: '' }],
+    tags: project?.tags ? [...project.tags] : [],
+    tools: project?.tools ? [...project.tools] : [],
   }));
   const [toast, setToast] = useState('');
 
@@ -335,9 +335,9 @@ export default function ProjectEditor({ project, onSave, onCancel }) {
               className={`${inputCls} flex-1 text-xs py-2.5`}
             />
           </div>
-<<<<<<< HEAD
-=======
-          
+
+
+
           {/* Vertical Video URL */}
           {draft.category === 'video' && (
             <div className="mt-3 flex gap-3 items-center">
@@ -351,7 +351,7 @@ export default function ProjectEditor({ project, onSave, onCancel }) {
               />
             </div>
           )}
->>>>>>> origin/master
+
         </div>
 
         {/* ── Behance-style: Large editable title ── */}
